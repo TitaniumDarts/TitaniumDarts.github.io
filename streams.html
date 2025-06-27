@@ -18,7 +18,6 @@
       overflow-x: hidden;
     }
 
-    /* Header */
     .site-header {
       background: #000;
       padding: 1rem 2rem;
@@ -81,7 +80,6 @@
       color: #e60000;
     }
 
-    /* Content Layout */
     .content {
       padding-top: 8rem;
       display: flex;
@@ -102,12 +100,14 @@
     }
 
     .stream-container {
-      width: 100%;
+      width: 80vw;
+      max-width: 1200px;
       height: 600px;
       background: #111;
       border: 2px solid #333;
       border-radius: 10px;
       overflow: hidden;
+      margin: 0 auto;
     }
 
     iframe {
@@ -115,6 +115,16 @@
       height: 100%;
       border: none;
       display: block;
+    }
+
+    .ad-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      min-height: 100px;
+      width: 100%;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -132,26 +142,73 @@
 
   <!-- Page Content -->
   <div class="content">
+
+    <!-- Stream 1 -->
     <div>
       <h2>US Darts Masters - Day 1</h2>
       <div class="stream-container">
         <iframe src="https://embedstreams.top/embed/alpha/u-s-darts-masters-day-1/2" allowfullscreen></iframe>
       </div>
+      <div class="ad-container">
+        <div style="width:728px; height:90px;">
+          <script type="text/javascript">
+            atOptions = {
+              'key': '878360ca0dff9549a537c8f5f3a4b086',
+              'format': 'iframe',
+              'height': 90,
+              'width': 728,
+              'params': {}
+            };
+          </script>
+          <script type="text/javascript" src="https://entertainedmagneticclients.com/878360ca0dff9549a537c8f5f3a4b086/invoke.js"></script>
+        </div>
+      </div>
     </div>
 
+    <!-- Stream 2 -->
     <div>
       <h2>Premier League Highlights</h2>
       <div class="stream-container">
         <iframe src="https://embedstreams.top/embed/alpha/premier-league-darts-highlights" allowfullscreen></iframe>
       </div>
+      <div class="ad-container">
+        <div style="width:728px; height:90px;">
+          <script type="text/javascript">
+            atOptions = {
+              'key': '878360ca0dff9549a537c8f5f3a4b086',
+              'format': 'iframe',
+              'height': 90,
+              'width': 728,
+              'params': {}
+            };
+          </script>
+          <script type="text/javascript" src="https://entertainedmagneticclients.com/878360ca0dff9549a537c8f5f3a4b086/invoke.js"></script>
+        </div>
+      </div>
     </div>
 
+    <!-- Stream 3 -->
     <div>
       <h2>Live Tournament Stream</h2>
       <div class="stream-container">
         <iframe src="https://embedstreams.top/embed/alpha/live-darts" allowfullscreen></iframe>
       </div>
+      <div class="ad-container">
+        <div style="width:728px; height:90px;">
+          <script type="text/javascript">
+            atOptions = {
+              'key': '878360ca0dff9549a537c8f5f3a4b086',
+              'format': 'iframe',
+              'height': 90,
+              'width': 728,
+              'params': {}
+            };
+          </script>
+          <script type="text/javascript" src="https://entertainedmagneticclients.com/878360ca0dff9549a537c8f5f3a4b086/invoke.js"></script>
+        </div>
+      </div>
     </div>
+
   </div>
 
   <!-- Scripts -->
@@ -161,7 +218,6 @@
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
 
-    // Close popup menu on outside click
     document.addEventListener("click", function (e) {
       const menu = document.getElementById("popupMenu");
       const button = document.querySelector(".menu-button");
