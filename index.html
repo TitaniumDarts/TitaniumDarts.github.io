@@ -204,6 +204,90 @@
       font-size: 1rem;
       margin-bottom: 1.5rem;
     }
+
+    .countdown-banner {
+      background: url('countdown banner.png') center center/cover no-repeat;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      margin-top: 3rem;
+      border-top: 2px solid #e60000;
+      border-bottom: 2px solid #e60000;
+    }
+
+    .countdown-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .countdown-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .countdown-content h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .countdown-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown-boxes {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown-segment {
+      background: #fff;
+      color: #000;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      min-width: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-segment .time {
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .countdown-segment .label {
+      font-size: 0.75rem;
+      margin-top: 0.2rem;
+    }
+
+    .countdown-btn {
+      background: #e60000;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .countdown-btn:hover {
+      background: #cc0000;
+    }
   </style>
 </head>
 <body>
@@ -229,10 +313,7 @@
 
   <!-- Stream Schedule Section -->
   <h2>STREAM SCHEDULE</h2>
-
   <section class="schedule-section">
-
-    <!-- UFC 317 -->
     <div class="event-block">
       <img src="ufc317image.jpeg" alt="UFC 317 Promo" />
       <div class="event-details">
@@ -242,8 +323,6 @@
         <a href="streams.html" class="btn">LIVE HERE</a>
       </div>
     </div>
-
-    <!-- Rizzy Live Event -->
     <div class="event-block">
       <img src="rizzy.png" alt="Rizzy Live Event" />
       <div class="event-details">
@@ -253,8 +332,6 @@
         <a href="streams.html" class="btn">LIVE HERE</a>
       </div>
     </div>
-
-    <!-- Rizz Tournament -->
     <div class="event-block">
       <img src="rizz.png" alt="Rizz Tournament" />
       <div class="event-details">
@@ -264,7 +341,33 @@
         <a href="streams.html" class="btn">LIVE HERE</a>
       </div>
     </div>
+  </section>
 
+  <!-- Countdown Section -->
+  <section class="countdown-banner">
+    <div class="countdown-content">
+      <h2>BETFRED WORLD MATCHPLAY</h2>
+      <p>July 19 - 27 2025</p>
+      <div class="countdown-boxes">
+        <div class="countdown-segment">
+          <div class="time" id="days">00</div>
+          <div class="label">Days</div>
+        </div>
+        <div class="countdown-segment">
+          <div class="time" id="hours">00</div>
+          <div class="label">Hours</div>
+        </div>
+        <div class="countdown-segment">
+          <div class="time" id="minutes">00</div>
+          <div class="label">Minutes</div>
+        </div>
+        <div class="countdown-segment">
+          <div class="time" id="seconds">00</div>
+          <div class="label">Seconds</div>
+        </div>
+      </div>
+      <a href="tournament-details.html" class="countdown-btn">View Tournament Details</a>
+    </div>
   </section>
 
   <!-- Scripts -->
@@ -281,6 +384,31 @@
         menu.style.display = "none";
       }
     });
+
+    // Countdown Script
+    const countdownDate = new Date("July 19, 2025 19:00:00").getTime();
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance < 0) {
+        document.querySelector(".countdown-boxes").innerHTML = "<div style='color: #e60000; font-size: 1.5rem;'>LIVE NOW!</div>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+    };
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
